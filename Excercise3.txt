@@ -1,0 +1,37 @@
+La oficina de movilidad del distrito (SDM) de Bogotá esta preparandose para el nuevo sistema de metro. El metro iniciara trabajando con dos lineas conectadas en una unica estación. El sistema iniciara teniendo 3 estaciones principales y 12 estaciones intermedias.
+
+El comportamiento de los metro-cars del metro esta dado por su estación de destino, que debería ser una de las estaciones principales. Por ejemplo si el vagon del metro actualmente esta en la estación de la "avenida Boyaca" tiene como destino la estación de la "calle 1", si sabemos que el vagon esta en dirección oriente. Como un hecho, los metro-cars usualmente operan en una unica linea, parando en todas las estaciones de esta linea. Sin embargo es posible tener metro-cars que crucen entre las lineas, teniendo un recorrido por todo el sistema. Por ejemplo un vagon puede iniciar en el Portal americas y finalizar en la estación de la calle 72.
+
+La administración de la ciudad compró dos tipos de metro-cars para el Metro, diferenciados por su capacidad, 12 metro-cars de 1800 pasajeros, y 11 metro-cars de 900 pasajeros. Los dos tipos de metro-cars conducen a una velocidad de 41 km/h, entre las estaciones (Ubicadas cada 1.39 Km). El sistema mantendra una frecuencia minima de 3.15 minutos en hora pico (7-9 a.m., 17-20 p.m.).
+
+El SDM desea administrar la frecuencia y capacidad del sistema de manera que pueda prestar un mejor servicio. El sistema actualmente espera una demanda de 990.000 pasajeros por día entre las 4 a.m y la media noche.
+
+Su trabajo es ofrecer una aplicación web reactiva que visualice toda la información relevante en tiempo real. Dicha información consta de:
+	1. La cantidad de pasajeros en cada estación.
+	2. La ubicación de cada metro-car.
+	3. El numero de pasajeros en cada metro-car.
+
+Para hacer esto, puede usar la información disponible del SDM que contiene los horarios de cada metro-car. Esta información se recoge a partir de los horarios de salida de cada metro-car, teniendo en cuenta su velocidad y la distancia entre estaciones. La información se puede encontrar en el archivo schedules.csv, que está formateado como sigue.
+
+Train Id , 	Departure station , Departure time , Destination
+--------    -----------------   --------------   -----------
+1, 			Calle 72, 			0400 , 			 Calle 1
+1, 			Calle 63, 			0404 , 			 Calle 1
+1, 			Calle 45, 			0408 , 			 Calle 1,
+6, 			Portal Americas , 	1351 , 			 Calle 72
+20, 		Portal Americas , 	1355 , 			 Calle 1
+
+Para conocer la cantidad de pasajeros que hay en cada estación puede acumular el número de pasajeros que ingresan a la estación mientras pasan su tarjeta inteligente para acceder.
+Cada golpe contiene la identificación del pasajero y el tiempo de entrada. Además, asumiremos
+Que el destino de los pasajeros se carga en la tarjeta también. Esta información debe ser
+Registrado y formateado como:
+
+Time , Destination
+----   -----------
+0600 , Calle 45
+1215 , Avenida Boyaca
+0940 , Calle 72
+
+Para permitir el paso de los pasajeros entre estaciones suponemos que si hay un metro-coche que para en el destino del pasajero, se sube al metro-car, siempre que haya bastante espacio. Del mismo modo, todos los pasajeros que tienen como destino la estación en la que se detiene el metro-car, bajar en esa estación, e inmediatamente se etiquetan fuera de la estación de intercambio de su tarjeta en las máquinas de salida. Una vez más, esta información se registra, siguiendo el mismo formato que antes.
+
+Toda la información registrada se utiliza para generar un informe de fin de día para cada estación. El informe consiste en un gráfico que muestra la densidad de los pasajeros en intervalos de 10 minutos. Además, el informe debe mostrar el número de pasajeros que utilizan la estación desagregada en los pasajeros que ingresan al sistema en la estación, y los pasajeros que salen del sistema en la estación, en intervalos de 10 minutos.
