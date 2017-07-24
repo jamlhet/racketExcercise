@@ -1,0 +1,9 @@
+Se necesita crear un sistema de base de datos para una biblioteca. El sistema debe manejar diferentes items, como libros y revistas (Ambos estan en medio fisico y electronico). Los libros y revistas tienen la información de #Autor, #titulo, #numerodepaginas. Adicionalmente las revistas porveen su #numero. Los items fisicos pueden ser prestados y tienen información acerca de la cantidad de días que es prestado y el día en que se presto. Los medios electronicos no pueden ser prestados, estos items, pueden ser consultados, y tiene un seguimiento de los días que son consultados, una consulta externa del libro cuesta $1000.
+
+ La base de datos, debe tener filas y un esquema de base de datos. Cada tabla debe contener una lista de filas, de por lo menos 100 posiciones. Las columnas deberan tener la información #nombre, #valor, #operadorComparación, si es un String debera poder compara String, si es un entero, debera poder comparar enteros, de manera que se puedan ordenar los registros correspondientes. Si en dado caso no tiene un tipo definido, se debera establecer un tipo por defecto.
+
+ La base de datos debe tener su propio dialecto SQL, #insert, #query, #update.
+
+ Los valores insertados en la base de datos, tomaran los atributos correspondientes a la tabla, #nombre, #valor_fila, por ejemplo, usted debe implementar una función tal como insertInto(table_name)(schema_with_values). La actualización de filas debe comportarse de igual manera. Finalmente las consultas deben ser simples, y tener en cuenta cuando se use o no, una clausula #WHERE, tal como se hace en SQL.
+
+ Recuerde ser lo mas funcional posible, preferiblemente usar #val a #var, (tail) recursion para iteraciones, composición de funciones (y Currying), funciones anonimas, etc.
